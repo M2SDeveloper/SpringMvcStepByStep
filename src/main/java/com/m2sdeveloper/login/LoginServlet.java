@@ -33,21 +33,34 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns="/login.do")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	LoginService loginService=new LoginService();
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("In Get method of login servlet");
-		request.setAttribute("name", request.getParameter("name"));
-		request.setAttribute("password", request.getParameter("password"));
 		request.getRequestDispatcher("WEB-INF/views/login.jsp").forward(request, response);
 	}	
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("In Post method of login servlets");
-		request.setAttribute("name", request.getParameter("name"));
-		request.getRequestDispatcher("WEB-INF/views/welcome.jsp").forward(request, response);
+		String name= request.getParameter("name");
+		String password= request.getParameter("password");
+		
+		Boolean isValidUser=loginService.validateUser(name, password);
+		
+		if(isValidUser)
+		{
+			request.setAttribute("name", name);
+			request.getRequestDispatcher("WEB-INF/views/welcome.jsp").forward(request, response);
+		}
+		else
+		{
+			request.setAttribute("errorMessage", "Invalid credential !!!!");
+			request.getRequestDispatcher("WEB-INF/views/login.jsp").forward(request, response);
+		}
+		
 	}
 }
