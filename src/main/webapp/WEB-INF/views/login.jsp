@@ -3,6 +3,8 @@
 <title>Yahoo!!</title>
 </head>
 <body>
-My First JSP!!! My name is ${name} and password is ${password}
+	<form action="/SpringMvcStepByStepApp/login.do" method="POST">
+		Name : <input type="text" name="name" /> <input type="submit" />
+	</form>
 </body>
 </html>
