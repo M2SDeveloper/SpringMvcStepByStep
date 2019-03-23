@@ -6,8 +6,8 @@
 	<p>
 		<font color="red">${errorMessage}</font>
 	</p>
-	<form action="/SpringMvcStepByStepApp/login.do" method="POST">
-		Name : <input type="text" name="name" /> Password : <input
+	<form action="/login" method="POST">
+		Name : <input name="name" type="text" /> Password : <input
 			name="password" type="password" /> <input type="submit" />
 	</form>
 </body>
