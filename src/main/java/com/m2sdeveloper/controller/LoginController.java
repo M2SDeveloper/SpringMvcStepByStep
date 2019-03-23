@@ -10,10 +10,10 @@ public class LoginController {
 
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	@ResponseBody
-	public String sayHello()
+	public String showLoginPage()
 	{
 		System.out.println("Hello World");
-		return "Hello World ";
+		return "login";
 	}
 	
 }
