@@ -1,8 +1,4 @@
-<html>
-<head>
-<title>Yahoo!!</title>
-</head>
-<body>
+<div class="container">
 	<p>
 		<font color="red">${errorMessage}</font>
 	</p>
@@ -10,5 +6,5 @@
 		Name : <input name="name" type="text" /> Password : <input
 			name="password" type="password" /> <input type="submit" />
 	</form>
-</body>
-</html>
+</div>
+<%@ include file="common/footer.jspf"%>
