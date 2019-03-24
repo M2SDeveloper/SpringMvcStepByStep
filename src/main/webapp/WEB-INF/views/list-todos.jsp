@@ -15,6 +15,7 @@
 					<th>Description</th>
 					<th>Date</th>
 					<th>Completed</th>
+					<th>Action</th>
 				</tr>
 			</thead>
 
@@ -24,6 +25,10 @@
 						<td>${todo.desc}</td>
 						<td>${todo.targetDate}</td>
 						<td>${todo.done}</td>
+						<td>
+							<a type="button" class="btn btn-warning" 
+								href="/SpringMvcStepByStepApp/delete-todo?id=${todo.id}">Delete</a>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
