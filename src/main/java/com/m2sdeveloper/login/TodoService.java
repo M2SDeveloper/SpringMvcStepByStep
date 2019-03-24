@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.m2sdeveloper.model.Todo;
 
@@ -18,7 +19,7 @@ public class TodoService {
 	static {
 		todos.add(new Todo(1, "m2sdeveloper", "Learn Spring MVC", new Date(), false));
 		todos.add(new Todo(2, "m2sdeveloper", "Learn Spring boot", new Date(), false));
-		todos.add(new Todo(3, "Mahendra", "Learn Hibernate", new Date(), false));
+		todos.add(new Todo(3, "mangesh", "Learn Hibernate", new Date(), false));
 	}
 
 	public List<Todo> retriveTodo(String user) {
