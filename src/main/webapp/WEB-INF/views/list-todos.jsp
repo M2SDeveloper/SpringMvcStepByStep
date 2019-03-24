@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html>
 <head>
 <title>Todos for ${name}</title>
@@ -13,7 +14,7 @@
 			<thead>
 				<tr>
 					<th>Description</th>
-					<th>Date</th>
+					<th>Target Date</th>
 					<th>Completed</th>
 					<th>Action</th>
 				</tr>
@@ -23,7 +24,8 @@
 				<c:forEach items="${todos}" var="todo">
 					<tr>
 						<td>${todo.desc}</td>
-						<td>${todo.targetDate}</td>
+						<td><fmt:formatDate pattern="dd/MM/yyyy"
+								value="${todo.targetDate}" /></td>
 						<td>${todo.done}</td>
 						<td><a type="button" class="btn btn-primary"
 							href="/SpringMvcStepByStepApp/update-todo?id=${todo.id}">Edit</a>
