@@ -22,7 +22,7 @@ public class TodoService {
 		todos.add(new Todo(3, "mangesh", "Learn Hibernate", new Date(), false));
 	}
 
-	public List<Todo> retriveTodo(String user) {
+	public List<Todo> retriveTodos(String user) {
 		List<Todo> filterTodo = new ArrayList<Todo>();
 		for (Todo todo : todos) {
 			if (todo.getUser().equals(user))
@@ -30,7 +30,21 @@ public class TodoService {
 		}
 		return filterTodo;
 	}
+	
+	public Todo retriveTodo(int id)
+	{
+		for (Todo todo : todos) {
+			if(todo.getId()==id)
+				return todo;
+		}
+		return null;
+	}
 
+	public void updateTodo(Todo todo)
+	{
+		todos.remove(todo);
+		todos.add(todo);
+	}
 	public void addTodo(String name, String desc, Date targetDate, boolean isDone) {
 		todos.add(new Todo(++todoCount, name, desc, targetDate, isDone));
 	}

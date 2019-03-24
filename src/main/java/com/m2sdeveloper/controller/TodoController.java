@@ -27,7 +27,7 @@ public class TodoController {
 	public String showLoginPage(ModelMap model) {
 		System.out.println("Test : In Todo Controller");
 		String user=(String) model.get("name");
-		model.addAttribute("todos", todoService.retriveTodo(user));
+		model.addAttribute("todos", todoService.retriveTodos(user));
 		return "list-todos";
 	}
 	
@@ -41,12 +41,32 @@ public class TodoController {
 	@RequestMapping(value="/add-todo", method=RequestMethod.POST)
 	public String addTodo(ModelMap model, @Valid Todo todo,BindingResult result)
 	{
-		System.out.println("Test :model Name "+(String) model.get("name"));
+		System.out.println("Inside add todo method");
 		if(result.hasErrors())
 			return "todo";
 		
 		todoService.addTodo((String) model.get("name"),todo.getDesc(), new Date(), false);
 		model.clear();// to prevent request parameter "name" to be passed
+		return "redirect:/list-todos";
+	}
+	
+	@RequestMapping(value="/update-todo", method=RequestMethod.GET)
+	public String showUpdateTodoPage(ModelMap model, @RequestParam int id) 
+	{
+		model.addAttribute("todo",todoService.retriveTodo(id));
+		return "todo";
+	}
+	
+	@RequestMapping(value="/update-todo", method=RequestMethod.POST)
+	public String updateTodo(ModelMap model, @Valid Todo todo,BindingResult result)
+	{
+		System.out.println("Inside update todo method");
+		if(result.hasErrors())
+			return "todo";
+		
+		todo.setUser((String) model.get("name"));
+		todo.setTargetDate(new Date());
+		todoService.updateTodo(todo);
 		return "redirect:/list-todos";
 	}
 	

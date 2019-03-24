@@ -3,7 +3,7 @@
 <head>
 <title>Todos for ${name}</title>
 <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"
-    rel="stylesheet">
+	rel="stylesheet">
 </head>
 <body>
 	<div class="container">
@@ -25,9 +25,10 @@
 						<td>${todo.desc}</td>
 						<td>${todo.targetDate}</td>
 						<td>${todo.done}</td>
-						<td>
-							<a type="button" class="btn btn-warning" 
-								href="/SpringMvcStepByStepApp/delete-todo?id=${todo.id}">Delete</a>
+						<td><a type="button" class="btn btn-primary"
+							href="/SpringMvcStepByStepApp/update-todo?id=${todo.id}">Edit</a>
+							<a type="button" class="btn btn-warning"
+							href="/SpringMvcStepByStepApp/delete-todo?id=${todo.id}">Delete</a>
 						</td>
 					</tr>
 				</c:forEach>
@@ -39,6 +40,6 @@
 	</div>
 
 	<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
-    <script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>
 </html>
